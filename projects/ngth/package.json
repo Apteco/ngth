@@ -1,6 +1,36 @@
 {
   "name": "@apteco/ngth",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "description": "ng-bullet successor to help speed up angular testing",
+  "keywords": [
+    "ng",
+    "angular",
+    "unit testing",
+    "testing",
+    "performance",
+    "typescript",
+    "jasmine",
+    "TestBed"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Matt Collinge",
+    "email": "matthew.collinge@apteco.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Apteco/ngth.git"
+  },
+  "homepage": "https://github.com/Apteco/ngth",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:watch": "ng test",
+    "test:watch-headless": "ng test --browsers=ChromeHeadless",
+    "lint": "ng lint"
+  },
   "peerDependencies": {
     "@angular/common": "^8.2.0",
     "@angular/core": "^8.2.0"

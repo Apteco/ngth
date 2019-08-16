@@ -7,15 +7,16 @@ const resetProviders = (moduleDef?: TestModuleMetadata) => {
   if (!moduleDef.providers) {
     return;
   }
+
   moduleDef.providers.forEach(provider => {
     if (!provider || !provider.useValue) {
       return;
     }
     const instance = provider.useValue;
+    if (instance && instance.resetProvider) {
+      instance.resetProvider();
+    }
     Object.keys(instance).forEach(property => {
-      if (instance[property] && instance[property].reset) {
-        instance[property].resetProvider();
-      }
       if (instance[property] && instance[property].calls && instance[property].calls.reset) {
         instance[property].calls.reset();
       }

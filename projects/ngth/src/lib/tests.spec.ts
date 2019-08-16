@@ -8,7 +8,23 @@ import { configureSuite } from './ng-test-helper';
     <h1>This is a test component</h1>
   `
 })
-export class TestComponent {}
+class TestComponent {}
+
+class MockProvider {
+  foo() {
+    console.log('legit one');
+  }
+}
+
+class TestMockProvider {
+  foo() {
+    console.log('foo called');
+  }
+
+  resetProvider() {
+    console.log('It was called');
+  }
+}
 
 describe('when using configure suite', () => {
   const originalResetTestingModule = TestBed.resetTestingModule;
@@ -18,12 +34,19 @@ describe('when using configure suite', () => {
   const configureSupplied: any = describe('and a configure action is supplied', () => {
     configureSuite(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent]
+        declarations: [TestComponent],
+        providers: [
+          {
+            provide: MockProvider,
+            useValue: new TestMockProvider()
+          }
+        ]
       });
     });
 
     beforeEach(() => {
       compileComponentsSpy = spyOn(TestBed, 'compileComponents');
+      const provider = TestBed.get(MockProvider);
     });
 
     it('that resetTestingModule is replaced', () => {
