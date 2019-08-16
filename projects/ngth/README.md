@@ -1,24 +1,51 @@
-# Ngth
+# What is ngth
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+ngth is the spiritual successor/extension to [ng-bullet](https://github.com/topnotch48/ng-bullet-workspace/tree/master/projects/ng-bullet). It offers the same functionality as well as resetting spy objects and mock services.
 
-## Code scaffolding
+# Getting Started
 
-Run `ng generate component component-name --project ngth` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngth`.
-> Note: Don't forget to add `--project ngth` or else it will be added to the default project in your `angular.json` file. 
+## Installation
 
-## Build
+**Using `npm`**
 
-Run `ng build ngth` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install @apteco/ngth
+```
 
-## Publishing
+**Using `yarn`\***
 
-After building your library with `ng build ngth`, go to the dist folder `cd dist/ngth` and run `npm publish`.
+```bash
+yarn add @apteco/ngth
+```
 
-## Running unit tests
+## Spec Files
 
-Run `ng test ngth` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Most Angular spec files configure components like so:
 
-## Further help
+```typescript
+beforeEach(async(() => {
+  TestBed.configureTestingModule({
+    declarations: [
+      /*list of components*/
+    ],
+    imports: [
+      /* list of providers*/
+    ]
+  }).compileComponents();
+}));
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+With **ngth** we change this to:
+
+```typescript
+    import { configureSuite } from '@apteco/ngth';
+    ...
+    configureSuite(() => {
+        TestBed.configureTestingModule({
+            declarations: [ /*list of components goes here*/ ],
+            imports: [ /* list of providers goes here*/ ]
+        })
+    });
+```
+
+There is no longer any need to call TestBed#compileComponents as ngth will call this and make sure that all components are compiled once and only once.
