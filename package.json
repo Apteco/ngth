@@ -30,7 +30,7 @@
     "test:watch": "ng test",
     "test:watch-headless": "ng test --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "publish": "ng build ngth && np --contents=./dist"
+    "publish": "ng build ngth && np --contents=./dist/ngth"
   },
   "private": false,
   "dependencies": {
