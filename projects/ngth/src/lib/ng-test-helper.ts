@@ -24,6 +24,14 @@ const resetProviders = (moduleDef?: TestModuleMetadata) => {
   });
 };
 
+const cleanUpStyles = () => {
+  const head: HTMLHeadElement = document.getElementsByTagName('head')[0];
+  const styles: HTMLCollectionOf<HTMLStyleElement> | [] = head.getElementsByTagName('style');
+  for (let i = 0; i < styles.length; i++) {
+    head.removeChild(styles[i]);
+  }
+};
+
 export const configureSuite = (configure?: () => void) => {
   const testBed: TestBed = getTestBed();
   const originalResetTestModule = TestBed.resetTestingModule;
@@ -59,6 +67,7 @@ export const configureSuite = (configure?: () => void) => {
   });
 
   afterAll(() => {
+    cleanUpStyles();
     TestBed.resetTestingModule = originalResetTestModule;
     TestBed.resetTestingModule();
     TestBed.configureTestingModule = originalConfigureTestingModule;
