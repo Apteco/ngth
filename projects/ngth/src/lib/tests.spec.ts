@@ -4,9 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { configureSuite } from './ng-test-helper';
 
 @Component({
-  template: `
-    <h1>This is a test component</h1>
-  `
+  template: ` <h1>This is a test component</h1> `,
 })
 class TestComponent {}
 
@@ -38,9 +36,9 @@ describe('when using configure suite', () => {
         providers: [
           {
             provide: MockProvider,
-            useValue: new TestMockProvider()
-          }
-        ]
+            useValue: new TestMockProvider(),
+          },
+        ],
       });
     });
 
@@ -50,11 +48,15 @@ describe('when using configure suite', () => {
     });
 
     it('that resetTestingModule is replaced', () => {
-      expect(TestBed.resetTestingModule).not.toEqual(originalResetTestingModule);
+      expect(TestBed.resetTestingModule).not.toEqual(
+        originalResetTestingModule
+      );
     });
 
     it('that configureTestingModule is replaced', () => {
-      expect(TestBed.configureTestingModule).not.toEqual(originalConfigureTestingModule);
+      expect(TestBed.configureTestingModule).not.toEqual(
+        originalConfigureTestingModule
+      );
     });
 
     it('that compileComponents is called automatically and only once', () => {
@@ -62,7 +64,12 @@ describe('when using configure suite', () => {
     });
 
     it('that jasmine callbacks are set correctly', () => {
-      if ('beforeAllFns' in configureSupplied && 'afterAllFns' in configureSupplied && 'afterFns' in configureSupplied && 'beforeFns' in configureSupplied) {
+      if (
+        'beforeAllFns' in configureSupplied &&
+        'afterAllFns' in configureSupplied &&
+        'afterFns' in configureSupplied &&
+        'beforeFns' in configureSupplied
+      ) {
         expect(configureSupplied.beforeAllFns.length).toBe(2);
         expect(configureSupplied.afterAllFns.length).toBe(2);
         expect(configureSupplied.afterFns.length).toBe(1);
@@ -85,11 +92,15 @@ describe('when using configure suite', () => {
     });
 
     it('that resetTestingModule is replaced', () => {
-      expect(TestBed.resetTestingModule).not.toEqual(originalResetTestingModule);
+      expect(TestBed.resetTestingModule).not.toEqual(
+        originalResetTestingModule
+      );
     });
 
     it('that configureTestingModule is replaced', () => {
-      expect(TestBed.configureTestingModule).not.toEqual(originalConfigureTestingModule);
+      expect(TestBed.configureTestingModule).not.toEqual(
+        originalConfigureTestingModule
+      );
     });
 
     it('that compileComponents is not called automatically', () => {

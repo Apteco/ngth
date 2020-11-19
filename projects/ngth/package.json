@@ -1,6 +1,6 @@
 {
   "name": "@apteco/ngth",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "ng-bullet successor to help speed up angular testing",
   "keywords": [
     "ng",
@@ -32,7 +32,7 @@
     "lint": "ng lint"
   },
   "peerDependencies": {
-    "@angular/common": "^8.2.0",
-    "@angular/core": "^8.2.0"
+    "@angular/common": "10.2.3",
+    "@angular/core": "10.2.3"
   }
 }
