@@ -1,4 +1,9 @@
-import { ComponentFixture, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  getTestBed,
+  TestBed,
+  TestModuleMetadata,
+} from '@angular/core/testing';
 
 const resetProviders = (moduleDef?: TestModuleMetadata) => {
   if (!moduleDef) {
@@ -8,7 +13,7 @@ const resetProviders = (moduleDef?: TestModuleMetadata) => {
     return;
   }
 
-  moduleDef.providers.forEach(provider => {
+  moduleDef.providers.forEach((provider) => {
     if (!provider || !provider.useValue) {
       return;
     }
@@ -16,8 +21,12 @@ const resetProviders = (moduleDef?: TestModuleMetadata) => {
     if (instance && instance.resetProvider) {
       instance.resetProvider();
     }
-    Object.keys(instance).forEach(property => {
-      if (instance[property] && instance[property].calls && instance[property].calls.reset) {
+    Object.keys(instance).forEach((property) => {
+      if (
+        instance[property] &&
+        instance[property].calls &&
+        instance[property].calls.reset
+      ) {
         instance[property].calls.reset();
       }
     });
@@ -26,7 +35,9 @@ const resetProviders = (moduleDef?: TestModuleMetadata) => {
 
 const cleanUpStyles = () => {
   const head: HTMLHeadElement = document.getElementsByTagName('head')[0];
-  const styles: HTMLCollectionOf<HTMLStyleElement> | [] = head.getElementsByTagName('style');
+  const styles:
+    | HTMLCollectionOf<HTMLStyleElement>
+    | [] = head.getElementsByTagName('style');
   for (let i = 0; i < styles.length; i++) {
     head.removeChild(styles[i]);
   }
@@ -63,6 +74,7 @@ export const configureSuite = (configure?: () => void) => {
       fixture.destroy();
     });
     testBed['_instantiated'] = false;
+    testBed['_testModuleRef'] = null;
     resetProviders(moduleMetadata);
   });
 
