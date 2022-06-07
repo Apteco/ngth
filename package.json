@@ -1,6 +1,6 @@
 {
   "name": "@apteco/ngth",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "ng-bullet successor to help speed up angular testing",
   "keywords": [
     "ng",
@@ -26,10 +26,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "test:watch": "ng test",
     "test:watch-headless": "ng test --browsers=ChromeHeadless",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "publish": "npm run build:prod && cd ./dist/ngth && npm publish --access public"
   },
   "private": false,
   "dependencies": {
