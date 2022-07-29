@@ -44,5 +44,8 @@
       }
     }
   },
-  "defaultProject": "ngth"
+  "defaultProject": "ngth",
+  "cli": {
+    "analytics": false
+  }
 }
